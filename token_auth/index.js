@@ -101,14 +101,14 @@ app.get('/logout', (req, res) => {
 
 const users = [
     {
-        login: 'Login',
-        password: 'Password',
-        username: 'Username',
+        login: 'Liza',
+        password: '1111',
+        username: 'Name',
     },
     {
-        login: 'Login1',
-        password: 'Password1',
-        username: 'Username1',
+        login: 'Liza2',
+        password: '2222',
+        username: 'Name2',
     }
 ]
 

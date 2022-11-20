@@ -9,7 +9,13 @@ const fs = require('fs');
 
 const app = express();
 app.use(bodyParser.json());
+
+// Returns middleware that only parses urlencoded bodies 
+// and only looks at requests where the Content-Type header matches the type option.
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Parse Cookie header and populate req.cookies 
+// with an object keyed by the cookie names.
 app.use(cookieParser());
 
 const SESSION_KEY = 'session';
@@ -45,6 +51,7 @@ class Session {
     }
 
     init(res) {
+        // Generate and set a session id
         const sessionId = uuid.v4();
         res.set('Set-Cookie', `${SESSION_KEY}=${sessionId}; HttpOnly`);
         this.set(sessionId);
@@ -108,14 +115,14 @@ app.get('/logout', (req, res) => {
 
 const users = [
     {
-        login: 'Login',
-        password: 'Password',
-        username: 'Username',
+        login: 'Liza',
+        password: '1111',
+        username: 'Name',
     },
     {
-        login: 'Login1',
-        password: 'Password1',
-        username: 'Username1',
+        login: 'Liza2',
+        password: '2222',
+        username: 'Name2',
     }
 ]
 
