@@ -23,6 +23,7 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^8.5.1",
     "on-finished": "^2.4.1",
+    "request": "^2.88.2",
     "uuid": "^9.0.0"
   }
 }
