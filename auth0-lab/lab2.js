@@ -17,12 +17,12 @@ const options = {
 };
 
 // // Send request
-request(options, (err, res, body) => {
-  if (err) throw new Error(err);
-  token = JSON.parse(body).access_token;
-  
-  console.log(token);
-});
+// request(options, (err, res, body) => {
+//   if (err) throw new Error(err);
+//   token = JSON.parse(body).access_token;
+
+//   console.log(token);
+// });
 
 // Create user
 
@@ -31,30 +31,29 @@ const userRequestOptions = {
   url: 'https://liza-dolhova.eu.auth0.com/api/v2/users',
   headers: {
     'content-type': 'application/json',
-    'Authorization':
-      `Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkQwN2h6eU55a0FPRmotR19WbHJyVSJ9.eyJpc3MiOiJodHRwczovL2xpemEtZG9saG92YS5ldS5hdXRoMC5jb20vIiwic3ViIjoibVVjT2JrNDhNM1phU1VZdU5sQlJ4WFo4NTRRWnVCa05AY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vbGl6YS1kb2xob3ZhLmV1LmF1dGgwLmNvbS9hcGkvdjIvIiwiaWF0IjoxNjcwMjQxNjY3LCJleHAiOjE2NzAzMjgwNjcsImF6cCI6Im1VY09iazQ4TTNaYVNVWXVObEJSeFhaODU0UVp1QmtOIiwic2NvcGUiOiJ1cGRhdGU6Y2xpZW50X2dyYW50cyByZWFkOnVzZXJzIHVwZGF0ZTp1c2VycyBjcmVhdGU6dXNlcnMiLCJndHkiOiJjbGllbnQtY3JlZGVudGlhbHMifQ.oafuCzLhB1LidyeMXf-LuxMEJ7UG3LsL1FFp12Gt5hTPwQ8ROg1xF98ExAQoDpJtvcb2PuPsRhw-wAlmYy3B5GYQIjCgTaCNk_IbYmBzUulmLh41cx4-R4QK-pO9sthRy3xKOmNc1dHrcFNT1FU8fgiUvu4VktuaU6rze5cKzg0cxfNfgjJFumhGM9b65b6Ib8rWYtdyG2tK7rhf8mzoPt0Kt7aWJ2jkKNuVzgLK8ElEgh_AtCHt5phHwmpkhWPNBOcBGDfeqNL8WjvBGlaEO9iD1sWNxgIFCQwDWfjqDrypnVgTAaOoK0APalUeVI3H_If7j1gXq11gWi39m6lTJA`
+    Authorization: `Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkQwN2h6eU55a0FPRmotR19WbHJyVSJ9.eyJpc3MiOiJodHRwczovL2xpemEtZG9saG92YS5ldS5hdXRoMC5jb20vIiwic3ViIjoibVVjT2JrNDhNM1phU1VZdU5sQlJ4WFo4NTRRWnVCa05AY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vbGl6YS1kb2xob3ZhLmV1LmF1dGgwLmNvbS9hcGkvdjIvIiwiaWF0IjoxNjcwNDQ1MDQxLCJleHAiOjE2NzA1MzE0NDEsImF6cCI6Im1VY09iazQ4TTNaYVNVWXVObEJSeFhaODU0UVp1QmtOIiwic2NvcGUiOiJyZWFkOmNsaWVudF9ncmFudHMgY3JlYXRlOmNsaWVudF9ncmFudHMgZGVsZXRlOmNsaWVudF9ncmFudHMgdXBkYXRlOmNsaWVudF9ncmFudHMgcmVhZDp1c2VycyB1cGRhdGU6dXNlcnMgZGVsZXRlOnVzZXJzIGNyZWF0ZTp1c2VycyByZWFkOnVzZXJzX2FwcF9tZXRhZGF0YSB1cGRhdGU6dXNlcnNfYXBwX21ldGFkYXRhIGRlbGV0ZTp1c2Vyc19hcHBfbWV0YWRhdGEgY3JlYXRlOnVzZXJzX2FwcF9tZXRhZGF0YSByZWFkOnVzZXJfY3VzdG9tX2Jsb2NrcyBjcmVhdGU6dXNlcl9jdXN0b21fYmxvY2tzIGRlbGV0ZTp1c2VyX2N1c3RvbV9ibG9ja3MgY3JlYXRlOnVzZXJfdGlja2V0cyByZWFkOmNsaWVudHMgdXBkYXRlOmNsaWVudHMgZGVsZXRlOmNsaWVudHMgY3JlYXRlOmNsaWVudHMgcmVhZDpjbGllbnRfa2V5cyB1cGRhdGU6Y2xpZW50X2tleXMgZGVsZXRlOmNsaWVudF9rZXlzIGNyZWF0ZTpjbGllbnRfa2V5cyByZWFkOmNvbm5lY3Rpb25zIHVwZGF0ZTpjb25uZWN0aW9ucyBkZWxldGU6Y29ubmVjdGlvbnMgY3JlYXRlOmNvbm5lY3Rpb25zIHJlYWQ6cmVzb3VyY2Vfc2VydmVycyB1cGRhdGU6cmVzb3VyY2Vfc2VydmVycyBkZWxldGU6cmVzb3VyY2Vfc2VydmVycyBjcmVhdGU6cmVzb3VyY2Vfc2VydmVycyByZWFkOmRldmljZV9jcmVkZW50aWFscyB1cGRhdGU6ZGV2aWNlX2NyZWRlbnRpYWxzIGRlbGV0ZTpkZXZpY2VfY3JlZGVudGlhbHMgY3JlYXRlOmRldmljZV9jcmVkZW50aWFscyByZWFkOnJ1bGVzIHVwZGF0ZTpydWxlcyBkZWxldGU6cnVsZXMgY3JlYXRlOnJ1bGVzIHJlYWQ6cnVsZXNfY29uZmlncyB1cGRhdGU6cnVsZXNfY29uZmlncyBkZWxldGU6cnVsZXNfY29uZmlncyByZWFkOmhvb2tzIHVwZGF0ZTpob29rcyBkZWxldGU6aG9va3MgY3JlYXRlOmhvb2tzIHJlYWQ6YWN0aW9ucyB1cGRhdGU6YWN0aW9ucyBkZWxldGU6YWN0aW9ucyBjcmVhdGU6YWN0aW9ucyByZWFkOmVtYWlsX3Byb3ZpZGVyIHVwZGF0ZTplbWFpbF9wcm92aWRlciBkZWxldGU6ZW1haWxfcHJvdmlkZXIgY3JlYXRlOmVtYWlsX3Byb3ZpZGVyIGJsYWNrbGlzdDp0b2tlbnMgcmVhZDpzdGF0cyByZWFkOmluc2lnaHRzIHJlYWQ6dGVuYW50X3NldHRpbmdzIHVwZGF0ZTp0ZW5hbnRfc2V0dGluZ3MgcmVhZDpsb2dzIHJlYWQ6bG9nc191c2VycyByZWFkOnNoaWVsZHMgY3JlYXRlOnNoaWVsZHMgdXBkYXRlOnNoaWVsZHMgZGVsZXRlOnNoaWVsZHMgcmVhZDphbm9tYWx5X2Jsb2NrcyBkZWxldGU6YW5vbWFseV9ibG9ja3MgdXBkYXRlOnRyaWdnZXJzIHJlYWQ6dHJpZ2dlcnMgcmVhZDpncmFudHMgZGVsZXRlOmdyYW50cyByZWFkOmd1YXJkaWFuX2ZhY3RvcnMgdXBkYXRlOmd1YXJkaWFuX2ZhY3RvcnMgcmVhZDpndWFyZGlhbl9lbnJvbGxtZW50cyBkZWxldGU6Z3VhcmRpYW5fZW5yb2xsbWVudHMgY3JlYXRlOmd1YXJkaWFuX2Vucm9sbG1lbnRfdGlja2V0cyByZWFkOnVzZXJfaWRwX3Rva2VucyBjcmVhdGU6cGFzc3dvcmRzX2NoZWNraW5nX2pvYiBkZWxldGU6cGFzc3dvcmRzX2NoZWNraW5nX2pvYiByZWFkOmN1c3RvbV9kb21haW5zIGRlbGV0ZTpjdXN0b21fZG9tYWlucyBjcmVhdGU6Y3VzdG9tX2RvbWFpbnMgdXBkYXRlOmN1c3RvbV9kb21haW5zIHJlYWQ6ZW1haWxfdGVtcGxhdGVzIGNyZWF0ZTplbWFpbF90ZW1wbGF0ZXMgdXBkYXRlOmVtYWlsX3RlbXBsYXRlcyByZWFkOm1mYV9wb2xpY2llcyB1cGRhdGU6bWZhX3BvbGljaWVzIHJlYWQ6cm9sZXMgY3JlYXRlOnJvbGVzIGRlbGV0ZTpyb2xlcyB1cGRhdGU6cm9sZXMgcmVhZDpwcm9tcHRzIHVwZGF0ZTpwcm9tcHRzIHJlYWQ6YnJhbmRpbmcgdXBkYXRlOmJyYW5kaW5nIGRlbGV0ZTpicmFuZGluZyByZWFkOmxvZ19zdHJlYW1zIGNyZWF0ZTpsb2dfc3RyZWFtcyBkZWxldGU6bG9nX3N0cmVhbXMgdXBkYXRlOmxvZ19zdHJlYW1zIGNyZWF0ZTpzaWduaW5nX2tleXMgcmVhZDpzaWduaW5nX2tleXMgdXBkYXRlOnNpZ25pbmdfa2V5cyByZWFkOmxpbWl0cyB1cGRhdGU6bGltaXRzIGNyZWF0ZTpyb2xlX21lbWJlcnMgcmVhZDpyb2xlX21lbWJlcnMgZGVsZXRlOnJvbGVfbWVtYmVycyByZWFkOmVudGl0bGVtZW50cyByZWFkOmF0dGFja19wcm90ZWN0aW9uIHVwZGF0ZTphdHRhY2tfcHJvdGVjdGlvbiByZWFkOm9yZ2FuaXphdGlvbnMgdXBkYXRlOm9yZ2FuaXphdGlvbnMgY3JlYXRlOm9yZ2FuaXphdGlvbnMgZGVsZXRlOm9yZ2FuaXphdGlvbnMgY3JlYXRlOm9yZ2FuaXphdGlvbl9tZW1iZXJzIHJlYWQ6b3JnYW5pemF0aW9uX21lbWJlcnMgZGVsZXRlOm9yZ2FuaXphdGlvbl9tZW1iZXJzIGNyZWF0ZTpvcmdhbml6YXRpb25fY29ubmVjdGlvbnMgcmVhZDpvcmdhbml6YXRpb25fY29ubmVjdGlvbnMgdXBkYXRlOm9yZ2FuaXphdGlvbl9jb25uZWN0aW9ucyBkZWxldGU6b3JnYW5pemF0aW9uX2Nvbm5lY3Rpb25zIGNyZWF0ZTpvcmdhbml6YXRpb25fbWVtYmVyX3JvbGVzIHJlYWQ6b3JnYW5pemF0aW9uX21lbWJlcl9yb2xlcyBkZWxldGU6b3JnYW5pemF0aW9uX21lbWJlcl9yb2xlcyBjcmVhdGU6b3JnYW5pemF0aW9uX2ludml0YXRpb25zIHJlYWQ6b3JnYW5pemF0aW9uX2ludml0YXRpb25zIGRlbGV0ZTpvcmdhbml6YXRpb25faW52aXRhdGlvbnMgcmVhZDpvcmdhbml6YXRpb25zX3N1bW1hcnkgY3JlYXRlOmFjdGlvbnNfbG9nX3Nlc3Npb25zIiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIn0.uh5EV7o2ir6scCs3ReuHKkg8YSRRIqWjq2IyZNlElTSV3mrfDXEBjinNB69Vou58MIZXwoZyDEJwgEgXu8SuqPDF4r6D7bRI4V1SdSKkLZy4bQaDW01UCjtPeLLt7VWfJB-yTd_u6EmuNV5SFMPfRzE93pIlj8WIuWKshdadrDiRXibUnVeRZrbc8y5jVBLjsvljEnGg51BaddHzVH1a-jX7txDrB6iJjCED0AuxWaKvTm18NN42h4LjwwCYkqb-APo-4Vzn2ZVM-5oJGW1_HO6srd2vd69C56Qlv59gPX08w9JTQxDnWM9t245DJMfzQdMae8eREpLCpmJUYaIp1w`,
   },
   body: JSON.stringify({
-    "email": 'littled@gmail.com',
-    "user_metadata": {},
-    "blocked": false,
-    "email_verified": false,
-    "app_metadata": {},
-    "given_name": 'Liza1',
-    "family_name": 'Dolhova1',
-    "name": 'Liza Dolhova1',
-    "nickname": 'Liz1',
-    "picture":
+    email: 'littled123@gmail.com',
+    user_metadata: {},
+    blocked: false,
+    email_verified: false,
+    app_metadata: {},
+    given_name: 'Liza1',
+    family_name: 'Dolhova1',
+    name: 'Liza Dolhova1',
+    nickname: 'Liz1',
+    picture:
       'https://secure.gravatar.com/avatar/15626c5e0c749cb912f9d1ad48dba440?s=480&r=pg&d=https%3A%2F%2Fssl.gstatic.com%2Fs2%2Fprofiles%2Fimages%2Fsilhouette80.png',
-    "user_id": 'abc1',
-    "connection": 'lab-connection',
-    "password": 'Liza12345',
-    "verify_email": false,
+    user_id: 'abc1',
+    connection: 'Username-Password-Authentication',
+    password: 'Liza12345',
+    verify_email: false,
   }),
 };
 
-// request(userRequestOptions, (err, res, body) => {
-//   if (err) throw new Error(err);
+request(userRequestOptions, (err, res, body) => {
+  if (err) throw new Error(err);
 
-//   console.log(body);
-// });
+  console.log(body);
+});
