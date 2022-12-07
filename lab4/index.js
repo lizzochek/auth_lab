@@ -141,7 +141,7 @@ app.post('/api/login', async (req, res) => {
       }
       await helpers.getUserData();
       req.session.username = process.env.NAME;
-      res.json({ token: access_token });
+      res.json({ token: req.sessionId });
     }
 
     return res.status(400).end();
