@@ -4,6 +4,7 @@ const { getAccessToken } = require('./getAccessToken');
 const { refreshToken } = require('./refreshToken');
 const { getUserData } = require('./getUserData');
 const { writeFile } = require('./writeFile');
+const { loadKey, readKey } = require('./keys');
 
 const helpers = {
   createUser,
@@ -12,6 +13,8 @@ const helpers = {
   refreshToken,
   writeFile,
   getUserData,
+  loadKey,
+  readKey,
 };
 
 module.exports = { helpers };

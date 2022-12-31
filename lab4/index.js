@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const port = 3000;
 const fs = require('fs');
+const jwt = require('jsonwebtoken');
 require('dotenv').config({ path: `${__dirname}/token-helpers` + '/.env' });
 
 const jwtDecode = require('jwt-decode');
@@ -66,11 +67,21 @@ class Session {
 
 const sessions = new Session();
 
-app.use((req, res, next) => {
+app.use(async (req, res, next) => {
   let currentSession = {};
   let sessionId = req.get(SESSION_KEY);
 
   if (sessionId) {
+    const access_token = fs.readFileSync('.access-token', 'utf8');
+    const key = await helpers.readKey();
+    try {
+      const decoded = jwt.verify(access_token, key);
+      console.log({ decoded });
+    } catch (err) {
+      console.error(err);
+      return res.status(401).end();
+    }
+
     currentSession = sessions.get(sessionId);
     if (!currentSession) {
       currentSession = {};
@@ -151,6 +162,10 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+(() =>
+  new Promise((resolve, reject) => {
+    app.listen(port, () => {
+      console.log(`Example app listening on port ${port}`);
+    });
+    helpers.loadKey();
+  }))();
